@@ -27,6 +27,7 @@ RETURN
     WHERE dim.systemstudentid!='-----'
         AND dim.enrollmentstatus = 'Currently Enrolled'
         AND dim.schoolname_mostrecent = @schoolname
+        AND dim.GradeLevel_Numeric IN (5,6,7,8)
         AND hr_info.subject = 'HR'
         AND hr_info.schoolyear4digit = (SELECT custom.fn_SchoolYear4Digit(GETDATE()))
 );
