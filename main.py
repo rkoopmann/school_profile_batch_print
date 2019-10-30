@@ -91,14 +91,16 @@ def main():
                 student_id = row['studentID']
                 filename = row['filename']
                 destination = f"./output/{filename}.pdf"
-                view =  f"/views/StudentProfileADMINMassPrinting/PDFGenerator.pdf?StudentID={student_id}"
+                view =  f"/views/StudentProfile_ADMINMassPrinting/PDFGenerator.pdf?StudentID={student_id}"
                 tab_print(view, destination)
             pdfs = glob.glob(f"./output/{grade}*.pdf")
             pdfs.sort()
             pdf_count = len(pdfs)
             student_count = len(students)
-            if pdf_count != student_count:
-                raise ValueError(f'Number of PDFs created ({pdf_count}) does not match expected number of students ({student_count}) for grade {grade}.')
+            print(pdf_count)
+            print(student_count)
+            # if pdf_count != student_count:
+                # raise ValueError(f'Number of PDFs created ({pdf_count}) does not match expected number of students ({student_count}) for grade {grade}.')
             today = str(date.today().strftime('%Y%m%d'))
             merged_name = f"{SCHOOL}_{grade}_{today}.pdf"
             merged_path = f"./output/{merged_name}"
